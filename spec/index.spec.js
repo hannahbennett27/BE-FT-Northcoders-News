@@ -39,15 +39,6 @@ describe("/northcoders-news", () => {
             );
           });
       });
-      // it("GET responds with status 502 and an error message when the server fails to connect to the database", () => {
-      //   const DB_URL = "mongodb://localhost:27017/database_error_test";
-      //   return request
-      //     .get("/api/topics")
-      //     .expect(502)
-      //     .then(res => {
-      //       expect(res.body.msg).to.equal("INTERNAL ERROR");
-      //     });
-      // });
     });
     describe("/topics/:topic_name/articles", () => {
       it("GET responds with status 200 and an object containing all the articles for a certain topic", () => {
@@ -180,7 +171,7 @@ describe("/northcoders-news", () => {
           });
       });
     });
-    describe("/articles/:article:id", () => {
+    describe.only("/articles/:article:id", () => {
       it("GET responds with status 200 and an object containing an individual article", () => {
         return request
           .get(`/api/articles/${articleDocs[0]._id}`)

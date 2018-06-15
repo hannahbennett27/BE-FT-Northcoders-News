@@ -10,8 +10,6 @@ mongoose
   })
   .then(() => {
     console.log("data successfully seeded...");
-  })
-  .then(() => {
     return mongoose.disconnect();
   })
   .then(() => {

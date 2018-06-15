@@ -4,19 +4,18 @@ const {
   endpointsJSON,
   formatPostArticle,
   formatArticlesForClient,
-  createArticleRef,
   formatCommentsForClient,
   formatPostComment
 } = require("../utils");
 
 const getEndpoints = (req, res, next) => {
-  res.send(endpointsJSON);
+  res.status(200).send(endpointsJSON);
 };
 
 const getTopics = (req, res, next) => {
   Topic.find()
     .then(topics => {
-      res.send({ topics });
+      res.status(200).send({ topics });
     })
     .catch(next);
 };
@@ -35,7 +34,7 @@ const getArticlesByTopic = (req, res, next) => {
           status: 404,
           msg: "articles not found: invalid topic name."
         });
-      res.send({ articles });
+      res.status(200).send({ articles });
     })
     .catch(next);
 };
@@ -48,9 +47,9 @@ const postArticleByTopic = (req, res, next) => {
           status: 404,
           msg: "topic not found: invalid topic name."
         });
-      return Promise.all([req, User.aggregate([{ $sample: { size: 1 } }])]);
+      return User.aggregate([{ $sample: { size: 1 } }]);
     })
-    .then(([req, userArr]) => {
+    .then(userArr => {
       const userId = userArr[0]._id;
       const newArticle = new Article(formatPostArticle(req, userId));
       return newArticle.save();
@@ -69,7 +68,7 @@ const getArticles = (req, res, next) => {
       return Promise.all(formatArticlesForClient(articleDocs));
     })
     .then(articles => {
-      res.send({ articles });
+      res.status(200).send({ articles });
     })
     .catch(next);
 };
@@ -80,15 +79,14 @@ const getArticleById = (req, res, next) => {
     .lean()
     .populate("created_by", "username")
     .then(articleDoc => {
-      if (articleDoc === null)
-        throw next({
-          status: 404,
-          msg: "article not found: invalid article id."
-        });
-      return Promise.all(formatArticlesForClient([articleDoc]));
+      if (articleDoc) return Promise.all(formatArticlesForClient([articleDoc]));
+      throw next({
+        status: 404,
+        msg: "article not found: invalid article id."
+      });
     })
     .then(([article]) => {
-      res.send({ article });
+      res.status(200).send({ article });
     })
     .catch(next);
 };
@@ -107,7 +105,7 @@ const getCommentsByArticleId = (req, res, next) => {
       return Promise.all(formatCommentsForClient(commentDocs));
     })
     .then(comments => {
-      res.send({ comments });
+      res.status(200).send({ comments });
     })
     .catch(next);
 };
@@ -120,9 +118,9 @@ const postCommentByArticleId = (req, res, next) => {
           status: 404,
           msg: "article not found: invalid article id."
         });
-      return Promise.all([req, User.aggregate([{ $sample: { size: 1 } }])]);
+      return User.aggregate([{ $sample: { size: 1 } }]);
     })
-    .then(([req, userArr]) => {
+    .then(userArr => {
       const userId = userArr[0]._id;
       const newComment = new Comment(formatPostComment(req, userId));
       return newComment.save();
@@ -156,7 +154,7 @@ const voteForArticleById = (req, res, next) => {
 const getComments = (req, res, next) => {
   Comment.find()
     .then(comments => {
-      res.send({ comments });
+      res.status(200).send({ comments });
     })
     .catch(next);
 };
@@ -198,7 +196,7 @@ const deleteCommentById = (req, res, next) => {
 const getUsers = (req, res, next) => {
   User.find()
     .then(users => {
-      res.send({ users });
+      res.status(200).send({ users });
     })
     .catch(next);
 };
@@ -209,7 +207,7 @@ const getUserByUsername = (req, res, next) => {
     .then(([user]) => {
       if (user === undefined)
         return next({ status: 404, msg: "user not found: invalid username." });
-      res.send({ user });
+      res.status(200).send({ user });
     })
     .catch(next);
 };

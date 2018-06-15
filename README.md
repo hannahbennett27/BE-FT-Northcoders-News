@@ -2,7 +2,7 @@
 
 Introducing my Northcoders News functioning API; a platform for users to post news articles, make comments and vote on posted content.
 
-API interacts with a MongoDB database.
+API created using Node.js v10.4.0, interacting with a MongoDB shell v3.0.15 database.
 
 ## **Getting Started**
 
@@ -19,19 +19,15 @@ $ git clone <your fork's URL>
 $ cd BE-FT-northcoders-news
 ```
 
-3.  Open the cloned repository in your preferred program. If using Visual Studio Code, run this command in your terminal:
+3.  Open the cloned repository in your preferred program, such as Visual Studio Code.
 
-```
-$ code .
-```
+4.  Using the integrated terminal in your chosen program, install all dependencies by entering `npm install`. A list of all requirements can be found in the `package.json` file; separated by `development` and `non-development dependencies`.
 
-4.  Using the terminal in your program, install all dependencies using `npm install`. A list of all requirments can by found in the `package.json` file; separated by `development` and `non-development dependencies`.
-
-5.  In order to utilise the enclosed MongoDB database, ensure `mongod` is running on your local machine (NB: Run `$ mongod` from a separate command line and leave it running in the background; ensuring you are using the correct repository folder in your terminal first).
+5.  In order to utilise the enclosed MongoDB database, ensure `mongod` is running on your local machine (NB: Run `$ mongod` from a separate command line and leave it running in the background, ensuring you are using the correct repository folder in your terminal first).
 
 ## **Seed Setup Instructions**
 
-Seeding your database for `testing` and `development` requires a config file dedicated to each environemt.
+Seeding your database for `testing` and `development` requires a config file dedicated to each environment.
 
 Make sure you're still using the correct repository folder in your terminal and create your config files:
 
@@ -46,12 +42,12 @@ In the test.js and dev.js files, export your database url and elected port:
 
 ```javascript
 module.exports = {
-  DB_URL: "mongodb://localhost:27017/<filename>",
+  DB_URL: "mongodb://localhost:27017/<db-filename>",
   PORT: 9090
 };
 ```
 
-**Make sure you create two different filenames for each environment, example:**
+**Make sure you create two different database filenames for each environment, example:**
 
 ```
 test.js:  northcoders_news_test
@@ -90,9 +86,9 @@ A command line script for running your test file has been completed for you (see
 $ npm test
 ```
 
-Each test `describe` block is designed to test a unique API endpoint, with each internal `it` test designed to test each request type ('GET', 'POST', etc) and ensure that all potential user errors are handled appropriately.
+Each test `describe` block is designed to test a unique API endpoint, with each internal `it` statement designed to test each request type ('GET', 'POST', etc) and ensure that all potential user errors are handled appropriately.
 
-To run a separate `describe` block or an individual `it` test, append `only` to the requried test:
+To run a separate `describe` block or an individual `it` test, append `only` to the required test:
 
 ```javascript
 describe.only("...");
@@ -140,7 +136,7 @@ Northcoders News has been deployed to a `production` environment, using [mLab](h
 
 Please check out my Northcoders News functioning API at:
 
-**https://hb-northcoders-news-api.herokuapp.com/api**
+[**https://hb-northcoders-news-api.herokuapp.com/api**](https://hb-northcoders-news-api.herokuapp.com/api)
 
 ## **Authors**
 
