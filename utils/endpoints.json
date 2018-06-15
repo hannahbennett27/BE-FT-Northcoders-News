@@ -1,0 +1,26 @@
+{
+  "Northcoders News": {
+    "API Endpoints": {
+      "GET /api/topics": "Returns all the topics",
+      "GET /api/topics/:topic_name/articles":
+        "Returns all the articles for a specified topic",
+      "POST /api/topics/:topic_name/articles":
+        "Posts a new article for a specified topic. NB: This route requires a JSON-body input with title and body key value pairs (eg: { 'title': 'new article', 'body': 'This is my new article content' })",
+      "GET /api/articles": "Returns all the articles",
+      "GET /api/articles/:article_id": "Returns a specified article",
+      "PUT /api/articles/:article_id":
+        "Increments or decrements the votes of a specified article by one. NB: This route requires a vote query of 'up' or 'down' (eg: /api/articles/:article_id?vote=up)",
+      "GET /api/articles/:article_id/comments":
+        "Returns all the comments for a specified article",
+      "POST /api/articles/:article_id/comments":
+        "Posts a new comment for a specified article. NB: This route requires a JSON-body input with a comment key and value pair (eg: { 'comment': 'This is my new comment' }",
+      "GET /api/comments": "Returns all the comments",
+      "PUT /api/comments/:comment_id":
+        "Increments or decrements the votes of a specified comment by one. NB: This route requires a vote query of 'up' or 'down' (eg: /api/comments/:comment_id?vote=down)",
+      "DELETE /api/comments/:comment_id":
+        "Deletes a specified comment if the comment was created by the Northcoders News user",
+      "GET /api/users": "Returns all the users",
+      "GET /api/users/:username": "Returns a specified user"
+    }
+  }
+}
