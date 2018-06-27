@@ -23,7 +23,7 @@ $ cd BE-FT-northcoders-news
 
 4.  Using the integrated terminal in your chosen program, install all dependencies by entering `npm install`. A list of all requirements can be found in the `package.json` file; separated by `development` and `non-development dependencies`.
 
-5.  In order to utilise the enclosed MongoDB database, ensure `mongod` is running on your local machine (NB: Run `$ mongod` from a separate command line and leave it running in the background, ensuring you are using the correct repository folder in your terminal first).
+5.  In order to utilise the enclosed MongoDB database, ensure `mongod` is running on your local machine (NB: Run `$ mongod` in a separate command line and leave it running in the background, ensuring you are using the correct repository folder in your terminal first).
 
 ## **Seed Setup Instructions**
 

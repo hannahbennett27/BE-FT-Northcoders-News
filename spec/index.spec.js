@@ -171,7 +171,7 @@ describe("/northcoders-news", () => {
           });
       });
     });
-    describe.only("/articles/:article:id", () => {
+    describe("/articles/:article:id", () => {
       it("GET responds with status 200 and an object containing an individual article", () => {
         return request
           .get(`/api/articles/${articleDocs[0]._id}`)

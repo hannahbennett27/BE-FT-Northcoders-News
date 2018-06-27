@@ -1,5 +1,4 @@
 const { Topic, Article, User, Comment } = require("../models");
-const mongoose = require("mongoose");
 const {
   endpointsJSON,
   formatPostArticle,
