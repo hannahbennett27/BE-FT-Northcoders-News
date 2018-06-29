@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
@@ -8,12 +8,12 @@ const CommentSchema = new Schema({
   },
   belongs_to: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'articles',
+    ref: "articles",
     required: true
   },
   created_at: {
     type: Number,
-    default: new Date().getTime()
+    default: () => new Date().getTime()
   },
   votes: {
     type: Number,
@@ -21,9 +21,9 @@ const CommentSchema = new Schema({
   },
   created_by: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'users',
+    ref: "users",
     required: true
   }
 });
 
-module.exports = mongoose.model('comments', CommentSchema);
+module.exports = mongoose.model("comments", CommentSchema);
